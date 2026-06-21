@@ -1,0 +1,146 @@
+{
+  "SETUP": {
+    "BASEMD": {
+      "BASEPLANE_2D": [
+        {
+          "GEOMETRY": {
+            "file": "input_data/mesh_interp_test.2dm",
+            "type": "2dm",
+            "STRINGDEF": [
+              {
+                "name": "zufluss_rhone",
+                "upstream_direction": "left"
+              },
+              {
+                "name": "zufluss_navizence",
+                "upstream_direction": "right"
+              },
+              {
+                "name": "eisenbahnbruecke_upstream",
+                "upstream_direction": "left"
+              },
+              {
+                "name": "eisenbahnbruecke_downstream",
+                "upstream_direction": "left"
+              },
+              {
+                "name": "abfluss_1",
+                "upstream_direction": "left"
+              },
+              {
+                "name": "abfluss_2",
+                "upstream_direction": "left"
+              }
+            ]
+          },
+          "HYDRAULICS": {
+            "FRICTION": {
+              "default_friction": 0.03,
+              "type": "manning",
+              "wall_friction": "on"
+            },
+            "INITIAL": {
+              "type": "dry"
+            },
+            "PARAMETER": {},
+            "BOUNDARY": [
+              {
+                "type": "hydrograph",
+                "slope": 3.4,
+                "file": "input_data/zufluss_rhone_36000.txt",
+                "string_name": "zufluss_rhone",
+                "number_of_iterations": 5000
+              },
+              {
+                "type": "hydrograph",
+                "slope": 9.0,
+                "file": "input_data/zufluss_navizence_36000.txt",
+                "string_name": "zufluss_navizence"
+              },{
+                "type": "hqrelation",
+                "slope": 3.4,
+                "string_name": "eisenbahnbruecke_upstream"
+              },
+              {
+                "type": "hqrelation",
+                "slope": 3.4,
+                "string_name": "abfluss_1"
+                
+              },
+              {
+                "type": "hqrelation",
+                "slope": 3.4,
+                "string_name": "abfluss_2"
+                
+              }
+              
+            ]
+          },
+          "OUTPUT": {
+            "console_time_step": 3600.0,
+            "reference_time": "29-06-2024-22-00-00",
+            "restart_time_step": 1e+32,
+            "SPECIAL_OUTPUT": [
+              {
+                "stringdefs": [
+                  "eisenbahnbruecke_upstream"
+                ],
+                "output_time_step": 3600.0,
+                "type": "stringdef_history",
+                "stringdef_values": [
+                  {
+                    "accumulator": "none",
+                    "value": "Q"
+                  },
+                  {
+                    "accumulator": "none",
+                    "value": "u"
+                  },
+                  {
+                    "accumulator": "none",
+                    "value": "wse"
+                  }
+                ]
+              },
+              {
+                "output_time_step": 36000.0,
+                "type": "element_centered",
+                "format": "shape",
+                "values": [
+                  {
+                    "accumulator": "max",
+                    "value": "depth"
+                  }
+                ]
+              },
+              {
+                "output_time_step": 3600.0,
+                "type": "node_centered",
+                "format": "sms",
+                "values": [
+                  {
+                    "accumulator": "none",
+                    "value": "depth"
+                  },
+                  {
+                    "accumulator": "none",
+                    "value": "velocity"
+                  },
+                  {
+                    "accumulator": "none",
+                    "value": "wse"
+                  }
+                ]
+              }
+            ]
+          },
+          "TIMESTEP": {
+            "total_run_time": 36000.0
+          },
+          "region_name": "Siders"
+        }
+      ]
+    },
+    "simulation_name": "Siders"
+  }
+}
