@@ -47,9 +47,8 @@ create_new_model:
 
 #
 sync_model_result:
-	mkdir -p "Resultate/$(model_name)/" && \
-    rsync -rlv --checksum "$(username)@$(server):/mnt/data2/cas/basement/models/$(model_name)/Siders*"  "Resultate/$(model_name)/"  
+    rsync -rlv --checksum "$(username)@$(server):/mnt/data2/cas/basement/models/$(model_name)/Siders*"  "../Resultate/$(model_name)/"  
 
 
 rasterize_model_result:
-	gdal_rasterize -a max_depth -tr 0.5 0.5 -a_nodata -9999.0 -ot Float32 -of GTiff -a_srs EPSG:2056 -tap -co "COMPRESS=DEFLATE" -co "PREDICTOR=3" "Resultate/$(model_name)/Siders_els_track.shp" "Resultate/$(model_name)/$(model_name).tif"
+	gdal_rasterize -a max_depth -tr 0.5 0.5 -a_nodata -9999.0 -ot Float32 -of GTiff -a_srs EPSG:2056 -tap -co "COMPRESS=DEFLATE" -co "PREDICTOR=3" "../Resultate/$(model_name)/Siders_els_track.shp" "../Resultate/$(model_name)/$(model_name).tif"
