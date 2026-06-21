@@ -70,7 +70,7 @@
                 "type": "hqrelation",
                 "slope": 3.4,
                 "string_name": "eisenbahnbruecke_upstream",
-                "file": "input_data/hq_relation_eisenbahnbruecke.txt"
+                "file": "input_data/hq_relation_eisenbahn.txt"
               },
               {
                 "type": "hydrograph",
@@ -83,7 +83,7 @@
                 "type": "hqrelation",
                 "string_name": "strassenbruecke_upstream",
                 "slope": 3.4,
-                "file": "input_data/hq_relation_strassenbruecke.txt"
+                "file": "input_data/hq_relation_strasse.txt"
               },
               {
                 "type": "hydrograph",
