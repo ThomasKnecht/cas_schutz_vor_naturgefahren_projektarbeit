@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 # Setup
-# "messstationen", "with_bridges", "without_bridges"
+# "messstationen", "with_bridges", "without_bridges", "with_road_bridge"
 mesh_name = sys.argv[1]
 with_holemarker = sys.argv[2]
 maximum_area = int(sys.argv[3])
@@ -23,6 +23,8 @@ points = points[["Region", "Maximum_area", "Hole_marker", "geometry"]]
 
 if with_holemarker == "with_bridges":
     points["Hole_marker"] = np.where(points["Region"].isin([2, 3]), 1, np.nan)
+elif with_holemarker == "with_road_bridge":
+    points["Hole_marker"] = np.where(points["Region"].isin([3]), 1, np.nan)
 elif with_holemarker == "messstationen":
     points["Hole_marker"] = np.where(points["Region"].isin([2, 4]), 1, np.nan)
 elif with_holemarker == "without_bridges":

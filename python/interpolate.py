@@ -23,7 +23,7 @@ mesh_path = sys.argv[1]
 # Inputs — adjust as needed
 # ---------------------------------------------------------------------------
 input_mesh_path   = f"{mesh_path}/output_basemesh/mesh_test.2dm"
-raster_path = "base_data/merged_dem_hardcut_gebplus10m.tif"
+raster_path = "base_data/merged_dem_hardcut_gebplus10m_plus30cm.tif"
 output_path = f"{mesh_path}/output_basemesh/mesh_interp_test.2dm"
 
 # ---------------------------------------------------------------------------
