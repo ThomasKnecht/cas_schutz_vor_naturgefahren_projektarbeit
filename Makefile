@@ -45,9 +45,9 @@ create_new_model:
 	rsync -rlv --checksum "./models/$(model_name)/" "$(username)@$(server):/mnt/data2/cas/basement/models/$(model_name)/" 
 
 
-#
+
 sync_model_result:
-    rsync -rlv --checksum "$(username)@$(server):/mnt/data2/cas/basement/models/$(model_name)/Siders*"  "../Resultate/$(model_name)/"  
+	rsync -rlv --checksum "$(username)@$(server):/mnt/data2/cas/basement/models/$(model_name)/Siders*"  "../Resultate/$(model_name)/"  
 
 
 rasterize_model_result:
