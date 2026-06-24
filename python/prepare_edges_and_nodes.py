@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 # Setup
-# "messstationen", "with_bridges", "without_bridges", "with_road_bridge"
+# "messstationen", "with_bridges", "without_bridges", "with_road_bridge" (if railway bridge is removed, only road bride remaining)
 mesh_name = sys.argv[1]
 with_holemarker = sys.argv[2]
 maximum_area = int(sys.argv[3])
