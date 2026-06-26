@@ -46,36 +46,39 @@ The commands need to be run in a terminal
 
 __Mesh-Createion__
 
-
 - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
-- To set up a new mesh run: 
+- To set up a new mesh, run: 
 ```
-# replace: the_new_name with your mesh name
+# mesh_name: choose a name
 
-make create_new_basemesh mesh_name=the_new_name
+make create_new_basemesh \
+    mesh_name=the_new_name
 ```
 
-- To create the mesh run:
+- To create the mesh, run:
 ```
 # syns the base_data and code to the server
 # creates the mesh
+
 # mesh_name: choose the same name as in the step before
 # hole_marker: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
 # maximum_area: integer value that defines the maximum mesh size
 
-make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara
+make run_basemesh \
+    mesh_name=the_new_name \
+    hole_marker=which_hole_marker \
+    maximum_area=ara
 ```
-
 
 - To sync back the result to your client, run: 
 
 ```
 # mesh_name: choose the same name as in the step before
 
-make sync_output_basemesh mesh_name=the_new_name
+make sync_output_basemesh \
+    mesh_name=the_new_name
 ```
-
 
 - Look at the created mesh in QGIS.
 
@@ -84,18 +87,56 @@ make sync_output_basemesh mesh_name=the_new_name
 
 __Creat and run Model__
 
-- run: `make reate_new_model model_name=your_model_name hole_marker=which_hole_marker time=run_time mesh_name=mesh_to_use`;
-This call sets up a new model structure on the client. It copies the needed mesh file into the `input_data`-directory as well as a preset config file from `config_templates` to `configuration` in the new model-directory. Futhermore it syncs the model setup to the server.
+- To set up a new model, run:
+```
+# Copies the needed Data into the input_data-directory as well as the need config-file from 
+# `config_templates` to `configuration` in the new model-directory.
+# Makes a first sync with the server
+
+# model_name: choose a model name
+# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
+# time: integer that sets the total run time in seconds
+# mesh_name: name of the mesh name to be used
+
+make reate_new_model \
+    model_name=your_model_name \
+    hole_marker=which_hole_marker \
+    time=run_time \
+    mesh_name=mesh_to_use
+```
 
 - Adjust the model.json if needed. Furthermore, the Zufluss and HQ-Relation files can/need to be adjusted.
 
-- run: `make run_model model_name=your_model_name`;
-This first syncs the model-directory to the server and then starts a tmux backround session in which the model is created.
+- To start the model, run: 
+```
+# Syncs the model setup to the server
+# starts a tmux background session
 
-- run: `make sync_model_result model_name=your_model_name simulation_name=simulation_name`;
-This syncs the results to your client. The `simulation_name` is the name josen in the model.json under: "simulation_name".
+# model_name: model name chosen in the step before
 
-- run: `make rasterize_model_result model_name=your_model_name simulation_name=simulation_name`;
-This rasterizes the shapefile for easier post processing and raster calculations.
+make run_model \
+    model_name=your_model_name
+```
 
-- look at the result mesh in QGIS. A style-file `QGIS_style.qml` is present in the model_results directory
+
+- To sync the results back to your client, run:
+```
+# model_name: model name chosen in the step before
+# simulation_name: in the model.json set name under: "simulation_name"
+
+make sync_model_result \
+    model_name=your_model_name \
+    simulation_name=simulation_name
+```
+
+- To create a raster from the result shape-file, run:
+```
+# model_name: model name chosen in the step before
+# simulation_name: in the model.json set name under: "simulation_name"
+
+make rasterize_model_result \
+    model_name=your_model_name \
+    simulation_name=simulation_name
+```
+
+- Visualize the resutl in QGIS. A style-file for the output-mesh can be found in the `model_result`-directory
