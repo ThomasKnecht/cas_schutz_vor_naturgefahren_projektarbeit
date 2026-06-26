@@ -49,9 +49,10 @@ __Mesh-Createion__
 
 - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
-- run: `make create_new_basemesh mesh_name=the_new_name`;
+    To set up a new mesh run: \
+    run: `make create_new_basemesh mesh_name=the_new_name`;
 
-This creates a new directory in the meshes-directory
+
 
 - run: `make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara`; 
 This call syncs first the base_data as well as the needed code to the server.
