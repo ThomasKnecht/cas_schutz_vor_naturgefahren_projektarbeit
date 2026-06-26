@@ -70,7 +70,7 @@ make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_a
 
 - To sync back the result to your client, run: 
 
-````
+```
 # mesh_name: choose the same name as in the step before
 
 make sync_output_basemesh mesh_name=the_new_name
