@@ -56,3 +56,20 @@ This syncs the created basemesh back to the client into the created mesh-directo
 
 - look at the created mesh in QGIS.
 
+__Creat and run Model__
+
+- run: `make reate_new_model model_name=your_model_name hole_marker=which_hole_marker time=run_time mesh_name=mesh_to_use`;
+This call sets up a new model structure on the client. It copies the needed mesh file into the `input_data`-directory as well as a preset config file from `config_templates` to `configuration` in the new model-directory. Futhermore it syncs the model setup to the server.
+
+- Adjust the model.json if needed. Furthermore, the Zufluss and HQ-Relation files can/need to be adjusted.
+
+- run: `make run_model model_name=your_model_name`;
+This first syncs the model-directory to the server and then starts a tmux backround session in which the model is created.
+
+- run: `make sync_model_result model_name=your_model_name simulation_name=simulation_name`;
+This syncs the results to your client. The `simulation_name` is the name josen in the model.json under: "simulation_name".
+
+- run: `make rasterize_model_result model_name=your_model_name simulation_name=simulation_name`;
+This rasterizes the shapefile for easier post processing and raster calculations.
+
+- look at the result mesh in QGIS. A style-file `QGIS_style.qml` is present in the model_results directory
