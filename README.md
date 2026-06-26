@@ -33,3 +33,26 @@ The call hat the following structure:
 
 `rsync -rlv --checksum "path-on-client" "$(username)@$(server):$(project_dir)/end-dir" `
 
+# Modelling Steps
+
+The modelling steps are mostly defined as code in the Makefile.
+There are some steps that need to be made manually when creating a new model.
+
+## Step-by-Step
+
+__Mesh-Createion__
+ 
+- Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
+
+- run: `make create_new_basemesh mesh_name=the_new_name`; 
+This creates a new directory in the meshes-directory
+
+- run: `make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara`; 
+This call syncs first the base_data as well as the needed code to the server.
+Then it creates the basemesh. There are the following options for the `hole_marker`: "messstationen", "with_bridges", "without_bridges", "with_read_bridge". The area is set as integer.
+
+- run: `make sync_output_basemesh mesh_name=the_new_name`;
+This syncs the created basemesh back to the client into the created mesh-directory.
+
+- look at the created mesh in QGIS.
+
