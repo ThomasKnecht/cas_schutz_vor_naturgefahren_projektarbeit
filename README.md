@@ -18,7 +18,7 @@ On the linux-server the following software needs to be available:
     - python
 
     - uv (https://docs.astral.sh/uv/getting-started/installation/)
-    
+
     - basemesh (https://pypi.org/project/BASEmesh/)
 
 On the client the following global variables need to be defined:
@@ -40,6 +40,7 @@ The call hat the following structure:
 
 The modelling steps are mostly defined as code in the Makefile.
 There are some steps that need to be made manually when creating a new model.
+The commands need to be run in a terminal
 
 ## Step-by-Step
 
@@ -48,7 +49,8 @@ __Mesh-Createion__
 
 - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
-- run: `make create_new_basemesh mesh_name=the_new_name`; 
+- run: `make create_new_basemesh mesh_name=the_new_name`;
+
 This creates a new directory in the meshes-directory
 
 - run: `make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara`; 
