@@ -14,8 +14,11 @@ The modelling process is set up so that the creation of the mesh and the modelli
 On the linux-server the following software needs to be available:
     
     - BASEMENT 4.2 (https://basement.ethz.ch/download/software-download/download-v4.html)
+
     - python
+
     - uv (https://docs.astral.sh/uv/getting-started/installation/)
+    
     - basemesh (https://pypi.org/project/BASEmesh/)
 
 On the client the following global variables need to be defined:
@@ -42,7 +45,7 @@ There are some steps that need to be made manually when creating a new model.
 
 __Mesh-Createion__
 
-```
+
 - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
 - run: `make create_new_basemesh mesh_name=the_new_name`; 
@@ -57,7 +60,7 @@ This syncs the created basemesh back to the client into the created mesh-directo
 
 - look at the created mesh in QGIS.
 
-```
+
 
 
 __Creat and run Model__
