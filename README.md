@@ -52,19 +52,32 @@ __Mesh-Createion__
 - To set up a new mesh run: 
 ```
 # replace: the_new_name with your mesh name
+
 make create_new_basemesh mesh_name=the_new_name
 ```
 
+- To create the mesh run:
+```
+# syns the base_data and code to the server
+# creates the mesh
+# mesh_name: choose the same name as in the step before
+# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
+# maximum_area: integer value that defines the maximum mesh size
+
+make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara
+```
 
 
-- run: `make run_basemesh mesh_name=the_new_name hole_marker=which_hole_marker maximum_area=ara`; 
-This call syncs first the base_data as well as the needed code to the server.
-Then it creates the basemesh. There are the following options for the `hole_marker`: "messstationen", "with_bridges", "without_bridges", "with_read_bridge". The area is set as integer.
+- To sync back the result to your client, run: 
 
-- run: `make sync_output_basemesh mesh_name=the_new_name`;
-This syncs the created basemesh back to the client into the created mesh-directory.
+````
+# mesh_name: choose the same name as in the step before
 
-- look at the created mesh in QGIS.
+make sync_output_basemesh mesh_name=the_new_name
+```
+
+
+- Look at the created mesh in QGIS.
 
 
 
