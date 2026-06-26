@@ -41,7 +41,8 @@ There are some steps that need to be made manually when creating a new model.
 ## Step-by-Step
 
 __Mesh-Createion__
- 
+
+```
 - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
 - run: `make create_new_basemesh mesh_name=the_new_name`; 
@@ -55,6 +56,9 @@ Then it creates the basemesh. There are the following options for the `hole_mark
 This syncs the created basemesh back to the client into the created mesh-directory.
 
 - look at the created mesh in QGIS.
+
+```
+
 
 __Creat and run Model__
 
