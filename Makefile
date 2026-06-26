@@ -14,8 +14,10 @@ sync_mesh_code:
 	rsync -rlv --checksum "./python/" "$(username)@$(server):$(project_dir)/meshes/" && \
 	rsync -rlv --checksum "./bash/create_mesh.sh" "$(username)@$(server):$(project_dir)/meshes/create_mesh.sh"
 
-# hole_marker: einer von den drei Möglichkeiten eingeben: "messstationen", "with_bridges", "without_bridges"
+# hole_marker: einer von den drei Möglichkeiten eingeben: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
 run_basemesh:
+	make sync_mesh_base_data
+	make sync_mesh_code
 	ssh -o HostKeyAlgorithms=+ssh-rsa $(username)@$(server) 'bash -lc "cd $(project_dir)/meshes/ && chmod +x ./create_mesh.sh && ./create_mesh.sh $(mesh_name) $(hole_marker) $(maximum_area)"'
 
 sync_output_basemesh:
@@ -48,7 +50,7 @@ create_new_model:
 
 
 sync_model_result:
-	rsync -rlv --checksum "$(username)@$(server):$(project_dir)/models/$(model_name)/Siders*"  "../Resultate/$(model_name)/"  
+	rsync -rlv --checksum "$(username)@$(server):$(project_dir)/models/$(model_name)/$(simulation_name)*"  "model_results/$(model_name)/"  
 
 
 rasterize_model_result:
@@ -60,5 +62,5 @@ rasterize_model_result:
 		-tap \
 		-co "COMPRESS=DEFLATE" \
 		-co "PREDICTOR=3" \
-		"../Resultate/$(model_name)/Siders_els_track.shp" \
-		"../Resultate/$(model_name)/$(model_name).tif"
+		"model_results/$(model_name)/$(simulation_name).shp" \
+		"model_results/$(model_name)/$(model_name).tif"
