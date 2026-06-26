@@ -1,4 +1,4 @@
-# cas_schutz_vor_naturgefahren_projektarbeit
+# Projektarbeit CAS "Schutz vor Naturgefahren"
 
 This repository contains the model runs for the hydrodynamical modelling with BASEMENT as part of the CAS-thesis "Hydrodynamische Modellierung der Überschwemmung im Raum Siders–Chippis mittels BASEMENT"
 
