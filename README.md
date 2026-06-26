@@ -47,9 +47,9 @@ The commands need to be run in a terminal
 __Mesh-Createion__
 
 
-    - Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
+- Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
-    - To set up a new mesh run: \
+- To set up a new mesh run: 
     `make create_new_basemesh mesh_name=the_new_name`;
 
 
