@@ -5,10 +5,28 @@ import sys
 
 # Setup
 # "messstationen", "with_bridges", "without_bridges", "with_road_bridge" (if railway bridge is removed, only road bride remaining)
+VALID_HOLE_MARKERS = {
+    "messstationen",
+    "with_bridges",
+    "without_bridges",
+    "with_road_bridge",
+}
+
+if len(sys.argv) != 4:
+    sys.exit(
+        "Usage: prepare_edges_and_nodes.py <mesh_name> <hole_marker> <maximum_area>\n"
+        f"  hole_marker must be one of: {', '.join(sorted(VALID_HOLE_MARKERS))}"
+    )
+
 mesh_name = sys.argv[1]
 with_holemarker = sys.argv[2]
 maximum_area = int(sys.argv[3])
 
+if with_holemarker not in VALID_HOLE_MARKERS:
+    sys.exit(
+        f"ERROR: unknown hole_marker '{with_holemarker}'. "
+        f"Expected one of: {', '.join(sorted(VALID_HOLE_MARKERS))}"
+    )
 
 ########################################################################################
 

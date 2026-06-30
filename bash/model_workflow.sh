@@ -1,7 +1,6 @@
 #!/bin/bash
 
-rm Siders*
-rm *.h5
+rm -f ./Siders* ./*.h5
 
 BMv4_setup configuration/model.json \
        --output setup.h5

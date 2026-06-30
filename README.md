@@ -44,9 +44,9 @@ The commands need to be run in a terminal
 
 ## Step-by-Step
 
-__Mesh-Createion__
+__Mesh-Creation__
 
-- Make sure that the DTM, the prerimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
+- Make sure that the DTM, the perimeter-file and the stringdefs-file are in the the `meshes/base_data/` directory
 
 - To set up a new mesh, run: 
 ```
@@ -62,13 +62,13 @@ make create_new_basemesh \
 # creates the mesh
 
 # mesh_name: choose the same name as in the step before
-# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
+# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_road_bridge"
 # maximum_area: integer value that defines the maximum mesh size
 
 make run_basemesh \
     mesh_name=the_new_name \
     hole_marker=which_hole_marker \
-    maximum_area=ara
+    maximum_area=area
 ```
 
 - To sync back the result to your client, run: 
@@ -94,11 +94,11 @@ __Creat and run Model__
 # Makes a first sync with the server
 
 # model_name: choose a model name
-# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_read_bridge"
+# hole_marker: "messstationen", "with_bridges", "without_bridges", "with_road_bridge"
 # time: integer that sets the total run time in seconds
 # mesh_name: name of the mesh name to be used
 
-make reate_new_model \
+make create_new_model \
     model_name=your_model_name \
     hole_marker=which_hole_marker \
     time=run_time \
@@ -139,4 +139,4 @@ make rasterize_model_result \
     simulation_name=simulation_name
 ```
 
-- Visualize the resutl in QGIS. A style-file for the output-mesh can be found in the `model_result`-directory
+- Visualize the result in QGIS. A style-file for the output-mesh can be found in the `model_result`-directory

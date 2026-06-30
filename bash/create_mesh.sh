@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 
 mkdir -p $1/input_basemesh/
 mkdir -p $1/output_basemesh/

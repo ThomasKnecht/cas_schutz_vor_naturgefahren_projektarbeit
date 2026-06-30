@@ -135,8 +135,6 @@ for idx, row in stringdefs.iterrows():
     else:
         continue
 
-    SNAP = 3 
-    print(row)
     attr_index = row["id"]
     name = row["typ"]
     line_string: List[Point2D] = []
@@ -149,7 +147,9 @@ for idx, row in stringdefs.iterrows():
 
 string_defs = basemesh.resolve_string_defs(string_def_lines, mesh, precision= 0.001)
 
-string_defs = basemesh.split_string_defs(string_defs, 20000)
+# 20000 = max number of nodes per resolved stringdef segment (BASEmesh limit).
+MAX_STRINGDEF_NODES = 20000
+string_defs = basemesh.split_string_defs(string_defs, MAX_STRINGDEF_NODES)
 
 for name, nodes in string_defs.items():
     mesh.add_node_string(name, [mesh.get_node_by_id(i) for i in nodes])

@@ -3,6 +3,16 @@ username ?= username
 server ?= server
 project_dir ?= project_dir
 	
+.PHONY: _check_remote create_new_basemesh sync_mesh_base_data sync_mesh_code \
+        run_basemesh sync_output_basemesh sync_uv_lock create_new_model \
+        sync_model run_model sync_model_result rasterize_model_result
+
+# Fail early (and clearly) if the remote variables were left at their defaults.
+_check_remote:
+	@if [ "$(username)" = "username" ] || [ "$(server)" = "server" ] || [ "$(project_dir)" = "project_dir" ]; then \
+		echo "ERROR: set username, server and project_dir (e.g. via 'export username=...') before running remote targets." >&2; \
+		exit 1; \
+	fi
 
 create_new_basemesh:
 	mkdir -p ./meshes/$(mesh_name)/
@@ -36,7 +46,7 @@ sync_output_basemesh:
 		"./meshes/$(mesh_name)/"
 
 sync_uv_lock:
-	rm ./src/python/uv.lock && \
+	rm -f ./python/uv.lock && \
     rsync -rlv --checksum \
 		"$(username)@$(server):$(project_dir)/meshes/uv.lock" \
 		"./python/uv.lock"
